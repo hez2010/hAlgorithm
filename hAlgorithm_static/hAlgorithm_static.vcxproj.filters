@@ -18,39 +18,16 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="stdafx.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="targetver.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="hAlgorithm.h">
+    <ClInclude Include="..\hAlgorithm\stdafx.h">
       <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Consts.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="DataTypes.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="func_sort.cpp">
-      <Filter>源文件</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="hAlgorithm.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="dllmain.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="hAlgorithm.def">
-      <Filter>源文件</Filter>
-    </None>
   </ItemGroup>
 </Project>
