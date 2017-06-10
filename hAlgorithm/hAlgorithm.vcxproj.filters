@@ -33,8 +33,8 @@
     <ClInclude Include="DataTypes.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="func_sort.cpp">
-      <Filter>源文件</Filter>
+    <ClInclude Include="Commands.h">
+      <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -45,6 +45,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="dllmain.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="func_sort.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="func_value.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

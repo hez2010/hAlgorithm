@@ -1,6 +1,5 @@
 #pragma once
 #include "stdafx.h"
-#include <lib2.h>
 
 #ifndef __E_STATIC_LIB
 LIB_CONST_INFO Consts[] =

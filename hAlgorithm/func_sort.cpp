@@ -1,10 +1,8 @@
 #include "stdafx.h"
-#include <lib2.h>
 #include <algorithm>
 #include <iostream>
 using namespace std;
 
-//定义命令
 ARG_INFO hAlgorithm_qsort_CommandArgs[] =
 {
 	/* { 参数名称, 参数描述, 图像索引, 图像数量, 参数类型(参见SDT_), 默认数值, 参数类别(参见AS_) } */
@@ -14,6 +12,7 @@ ARG_INFO hAlgorithm_qsort_CommandArgs[] =
 	{ _T("pIsAsc"), _T("是否正序排序"), 0, 0, SDT_BOOL, true, AS_HAS_DEFAULT_VALUE }
 
 };
+
 template<typename T, bool asc>
 
 bool sort_template(const T& a, const T& b)
@@ -34,8 +33,7 @@ int comp_string_desc(const char* a, const char* b)
 	else return false;
 }
 
-#define sort_x(name) sort((name*)((LONG)ptr+(begin-1)*sizeof(name)),(name*)((LONG)ptr+end*sizeof(name)),asc?sort_template<name,true>: sort_template<name, false>)
-
+#define sort_x(name) sort(reinterpret_cast<name*>(reinterpret_cast<LONG>(ptr)+(begin-1)*sizeof(name)),reinterpret_cast<name*>(reinterpret_cast<LONG>(ptr)+end*sizeof(name)),asc?sort_template<name,true>:sort_template<name,false>)
 
 EXTERN_C void hAlgorithm_qsort(PMDATA_INF pRetData, INT iArgCount, PMDATA_INF pArgInf)
 {
@@ -81,11 +79,3 @@ EXTERN_C void hAlgorithm_qsort(PMDATA_INF pRetData, INT iArgCount, PMDATA_INF pA
 		break;
 	}
 };
-
-
-/*
-函数的实现都需要定义在宏的外面以便静态和动态库都能使用，但ExecuteCommand，Commands则只需定义在宏的里面供动态库使用。
-pRetData 输出数据指针。当对应CMD_INFO中m_dtRetType为_SDT_NULL（即定义无返回值）时，pRetData无效；
-iArgCount 函数参数个数
-pArgInf 函数参数指针
-*/

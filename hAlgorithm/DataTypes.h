@@ -1,12 +1,11 @@
 #pragma once
 #include "stdafx.h"
-#include <lib2.h>
 
 //定义自定义数据类型
 #ifndef __E_STATIC_LIB
 INT DatatypeCommandIndexs[] =
 {
-	2
+	1
 };
 static LIB_DATA_TYPE_INFO DataTypes[] =
 {

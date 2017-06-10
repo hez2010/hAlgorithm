@@ -34,6 +34,6 @@
 #define LIB_Email "hez2010@126.com" /*电子邮箱*/
 #define LIB_HomePage "" /*主页地址*/
 #define LIB_Other "" /*其它信息*/
-#define LIB_TYPE_COUNT 2 /*命令分类数量*/
-#define LIB_TYPE_STR "0000排序算法\0""0000数论算法\0" /*命令分类*/
+#define LIB_TYPE_COUNT 3 /*命令分类数量*/
+#define LIB_TYPE_STR "0000排序算法\0""0000取值算法\0""0000数论算法\0" /*命令分类*/
 #endif

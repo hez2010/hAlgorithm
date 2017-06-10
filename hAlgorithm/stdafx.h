@@ -15,3 +15,7 @@
 #include "tchar.h"
 #include "wtypes.h"
 #include <winnt.h>
+
+#include <lib2.h>
+
+#include <fnshare.h>

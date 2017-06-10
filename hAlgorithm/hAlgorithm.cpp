@@ -3,33 +3,11 @@
 
 #include "stdafx.h"
 #include "hAlgorithm.h"
-#include <lib2.h>
 #include <lang.h>
-#include <fnshare.h>
 #include <fnshare.cpp>
 #include "Consts.h"
 #include "DataTypes.h"
-#include "func_sort.cpp"
-
-
-//------------------------库常量、命令、数据类型定义区-----------------------------
-
-#ifndef __E_STATIC_LIB
-PFN_EXECUTE_CMD ExecuteCommand[] =
-{
-	hAlgorithm_qsort // 所有需要库中调用的函数都列在这里，用逗号隔开
-};
-static const char* const CommandNames[] =
-{
-	"hAlgorithm_qsort" // 所有需要库中调用的函数名都写在这里，用逗号隔开
-};
-
-static CMD_INFO Commands[] =
-{
-	/* { 中文名称, 英文名称, 对象描述, 所属类别(-1是数据类型的方法), 命令状态(CT_), 返回类型(SDT_), 此值保留, 对象等级(LVL_), 图像索引, 图像数量, 参数个数, 参数信息 } */
-	{ _T("快速排序"), _T("qsort"), _T("对数组进行快速排序"), 1, NULL, SDT_BOOL, 0, LVL_SIMPLE, 0, 0, 4, hAlgorithm_qsort_CommandArgs },//基本命令
-};
-#endif
+#include "Commands.h"
 
 EXTERN_C INT WINAPI hAlgorithm_ProcessNotifyLib(INT nMsg, DWORD dwParam1, DWORD dwParam2)
 {
@@ -38,7 +16,7 @@ EXTERN_C INT WINAPI hAlgorithm_ProcessNotifyLib(INT nMsg, DWORD dwParam1, DWORD 
 		return reinterpret_cast<INT>(CommandNames);
 	else if (nMsg == NL_GET_NOTIFY_LIB_FUNC_NAME) // 返回处理系统通知的函数名称(PFN_NOTIFY_LIB函数名称), 支持静态编译的动态库必须处理
 		return reinterpret_cast<INT>("hAlgorithm_ProcessNotifyLib");
-	else if (nMsg == NL_GET_DEPENDENT_LIBS) return (INT)NULL;
+	else if (nMsg == NL_GET_DEPENDENT_LIBS) return static_cast<INT>(NULL);
 	// 返回静态库所依赖的其它静态库文件名列表(格式为\0分隔的文本,结尾两个\0), 支持静态编译的动态库必须处理
 	// kernel32.lib user32.lib gdi32.lib 等常用的系统库不需要放在此列表中
 	// 返回NULL或NR_ERR表示不指定依赖文件  
