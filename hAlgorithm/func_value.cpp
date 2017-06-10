@@ -31,8 +31,6 @@ EXTERN_C void hAlgorithm_max(PMDATA_INF pRetData, INT iArgCount, PMDATA_INF pArg
 {
 	auto datatype1 = pArgInf[0].m_dtDataType;
 	auto datatype2 = pArgInf[1].m_dtDataType;
-	auto *b = new char[256];
-	sprintf_s(b, 256, "%d", datatype1);
 	if (datatype1 != datatype2)
 	{
 		GReportError("pValue1 和 pValue2 的数据类型不匹配");
@@ -43,8 +41,5 @@ EXTERN_C void hAlgorithm_average(PMDATA_INF pRetData, INT iArgCount, PMDATA_INF 
 	auto dtType = pArgInf->m_dtDataType;
 	auto cntAry = 0;
 	void* ptr = GetAryElementInf(*pArgInf->m_ppAryData, &cntAry);
-	auto *b = new char[256];
-	sprintf_s(b, 256, "%d", dtType);
-	GReportError(b);
 	dtType &= ~DT_IS_ARY;
 }
