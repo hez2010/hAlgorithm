@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include <algorithm>
+#include<cstdio>
 using namespace std;
 
 ARG_INFO hAlgorithm_qsort_CommandArgs[] =
@@ -9,7 +10,6 @@ ARG_INFO hAlgorithm_qsort_CommandArgs[] =
 	{ _T("pBegin"), _T("起始排序位置，从 1 开始"), 0, 0, SDT_INT, 1, AS_HAS_DEFAULT_VALUE },
 	{ _T("pEnd"), _T("排序终止位置，0 代表全部"), 0, 0, SDT_INT, 0, AS_HAS_DEFAULT_VALUE },
 	{ _T("pIsAsc"), _T("是否正序排序"), 0, 0, SDT_BOOL, true, AS_HAS_DEFAULT_VALUE }
-
 };
 
 template<typename T, bool asc>
@@ -23,13 +23,13 @@ bool sort_template(const T& a, const T& b)
 int comp_string_asc(const char* a, const char* b)
 {
 	if (strcmp(a, b) < 0) return true;
-	else return false;
+	return false;
 }
 
 int comp_string_desc(const char* a, const char* b)
 {
 	if (strcmp(b, a) < 0) return true;
-	else return false;
+	return false;
 }
 
 #define sort_x(name) sort(reinterpret_cast<name*>(reinterpret_cast<LONG>(ptr)+(begin-1)*sizeof(name)),reinterpret_cast<name*>(reinterpret_cast<LONG>(ptr)+end*sizeof(name)),asc?sort_template<name,true>:sort_template<name,false>)
@@ -49,32 +49,32 @@ EXTERN_C void hAlgorithm_qsort(PMDATA_INF pRetData, INT iArgCount, PMDATA_INF pA
 		return;
 	}
 	pRetData->m_bool = TRUE;
-	dtType &= ~DT_IS_VAR;
+	dtType &= ~DT_IS_ARY;
 	switch (dtType) {
-	case SDT_BYTE: {
+	case SDT_BYTE: 
 		sort_x(BYTE);
-		break; }
-	case SDT_SHORT: {
+		break; 
+	case SDT_SHORT: 
 		sort_x(SHORT);
-		break; }
-	case SDT_INT: {
+		break; 
+	case SDT_INT: 
 		sort_x(INT);
-		break; }
-	case SDT_INT64: {
+		break; 
+	case SDT_INT64: 
 		sort_x(INT64);
-		break; }
-	case SDT_FLOAT: {
+		break; 
+	case SDT_FLOAT: 
 		sort_x(FLOAT);
-		break; }
+		break; 
 	case SDT_DATE_TIME:
-	case SDT_DOUBLE: {
+	case SDT_DOUBLE: 
 		sort_x(DOUBLE);
-		break; }
-	case SDT_TEXT: {
+		break; 
+	case SDT_TEXT: 
 		sort(reinterpret_cast<char**>(reinterpret_cast<LONG>(ptr) + (begin - 1) * sizeof(char*)), reinterpret_cast<char**>(reinterpret_cast<LONG>(ptr) + end * sizeof(char*)), asc ? comp_string_asc : comp_string_desc);
-		break; }
+		break; 
 	default:
 		pRetData->m_bool = FALSE;
 		break;
 	}
-};
+}

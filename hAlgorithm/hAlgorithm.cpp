@@ -14,9 +14,9 @@ EXTERN_C INT WINAPI hAlgorithm_ProcessNotifyLib(INT nMsg, DWORD dwParam1, DWORD 
 #ifndef __E_STATIC_LIB
 	if (nMsg == NL_GET_CMD_FUNC_NAMES) // 返回所有命令实现函数的的函数名称数组(char*[]), 支持静态编译的动态库必须处理
 		return reinterpret_cast<INT>(CommandNames);
-	else if (nMsg == NL_GET_NOTIFY_LIB_FUNC_NAME) // 返回处理系统通知的函数名称(PFN_NOTIFY_LIB函数名称), 支持静态编译的动态库必须处理
+	if (nMsg == NL_GET_NOTIFY_LIB_FUNC_NAME) // 返回处理系统通知的函数名称(PFN_NOTIFY_LIB函数名称), 支持静态编译的动态库必须处理
 		return reinterpret_cast<INT>("hAlgorithm_ProcessNotifyLib");
-	else if (nMsg == NL_GET_DEPENDENT_LIBS) return static_cast<INT>(NULL);
+	if (nMsg == NL_GET_DEPENDENT_LIBS) return static_cast<INT>(NULL);
 	// 返回静态库所依赖的其它静态库文件名列表(格式为\0分隔的文本,结尾两个\0), 支持静态编译的动态库必须处理
 	// kernel32.lib user32.lib gdi32.lib 等常用的系统库不需要放在此列表中
 	// 返回NULL或NR_ERR表示不指定依赖文件  
