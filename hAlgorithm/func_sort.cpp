@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include <algorithm>
-#include <iostream>
 using namespace std;
 
 ARG_INFO hAlgorithm_qsort_CommandArgs[] =
